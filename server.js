@@ -38,7 +38,7 @@ app.post('/api/ai-chat', async (req, res) => {
                 contents: [
                     {
                         parts: [
-                            { text: "You are an expert AI Assistant for DPG Polytechnic (HSBTE Board). Provide concise exam predictions, PYQ solutions, and academic notes assistance to diploma students." },
+                            { text: "You are an expert AI Assistant . Provide concise exam predictions, PYQ solutions, and academic notes assistance to diploma students." },
                             { text: message }
                         ]
                     }
@@ -64,7 +64,7 @@ app.post('/api/ai-chat', async (req, res) => {
 app.post('/api/solve-pdf', async (req, res) => {
     try {
         if (!req.files || !req.files.pdfFile) {
-            return res.status(400).json({ error: "Koi PDF file upload nahi ki gayi!" });
+            return res.status(400).json({ error: "No PDF file has been uploaded!" });
         }
 
         const pdfBuffer = req.files.pdfFile.data;

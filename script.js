@@ -179,7 +179,7 @@ async function sendAIMessage() {
 async function uploadAndSolvePDF(fileInputId) {
     const fileInput = document.getElementById(fileInputId);
     if (!fileInput || !fileInput.files[0]) {
-        alert("Pehle koi PDF file select karein!");
+        alert("First, select a PDF file!");
         return;
     }
 
@@ -195,7 +195,7 @@ async function uploadAndSolvePDF(fileInputId) {
     }
 
     try {
-        const response = await fetch('http://localhost:5000/api/solve-pdf', {
+        const response = await fetch('https://diploma-hubb.onrender.com', {
             method: 'POST',
             body: formData 
         });
