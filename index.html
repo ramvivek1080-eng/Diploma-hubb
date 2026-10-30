@@ -1,0 +1,855 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DPG Polytechnic Student Portal | Notes, PYQs & AI Assistant</title>
+
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+    <div class="top-bar">
+        <div class="container top-bar-container">
+            <div class="top-links">
+                <a href="#about">About DPG</a>
+                <a href="#branches">Engineering Departments</a>
+                <a href="#semesters">Study Materials</a>
+                <a href="#contact">Contact Us</a>
+            </div>
+        </div>
+    </div>
+
+    <header class="main-header">
+        <div class="container header-container">
+            <a href="#" class="brand-logo">
+                <i class="fa-solid fa-graduation-cap text-teal"></i> HSBTE<span>PYQS</span>
+            </a>
+            <nav class="nav-menu" id="navMenu">
+                <a href="#home" class="active">Home</a>
+                <a href="#branches">All Branches</a>
+                <a href="#semesters">Semesters (1-6)</a>
+                <a href="#resources">Study Materials</a>
+                <a href="#contact">Contact</a>
+            </nav>
+            <div class="header-actions">
+                <button class="btn btn-outline" onclick="toggleAIChat()"><i class="fa-solid fa-robot text-teal"></i> AI Exam Assistant</button>
+                <a href="#semesters" class="btn btn-teal">Explore Notes</a>
+            </div>
+        </div>
+    </header>
+
+   
+    <section class="hero-section" id="home">
+        <div class="container hero-container">
+            <div class="hero-text">
+                <span class="badge-accent">DPG Polytechnic Gurugram</span>
+                <h1>Create a better future.</h1>
+                <p>Access official HSBTE diploma engineering syllabus, structured notes, practical files, and previous-year question papers (PYQs) across all engineering departments.</p>
+
+                <div class="hero-search-box">
+                    <i class="fa-solid fa-search search-icon"></i>
+                    <input type="text" id="globalSearchInput"
+                        placeholder="Search branch, subject code (e.g., HSBTE-101), or topic..."
+                        onkeyup="handleGlobalSearch()">
+                    <button class="btn btn-teal" onclick="handleGlobalSearch()">Search</button>
+                </div>
+            </div>
+
+            <div class="hero-featured-card">
+                <span class="card-tag">AI FEATURE (Google Gemma)</span>
+                <h3>HSBTE Exam Predictor & PDF Solver</h3>
+                <p>Use our integrated Google Gemma AI Assistant to analyze past papers, predict questions, and solve uploaded question paper PDFs instantly.</p>
+                <button class="btn btn-teal mt-2" onclick="toggleAIChat()">Open AI Assistant <i class="fa-solid fa-arrow-right"></i></button>
+            </div>
+        </div>
+    </section>
+
+    <section class="highlights-section">
+        <div class="container highlights-grid">
+            <div class="highlight-card">
+                <p class="highlight-sub">Structured Learning</p>
+                <h3>HSBTE CURRICULUM</h3>
+                <p>Curated semester notes organized strictly by DPG diploma engineering branches.</p>
+            </div>
+            <div class="highlight-card">
+                <p class="highlight-sub">Exam Readiness</p>
+                <h3>QUESTION PAPERS & PYQS</h3>
+                <p>Download previous years' solved exam papers and board model answers.</p>
+            </div>
+            <div class="highlight-card">
+                <p class="highlight-sub">Smart Assistance</p>
+                <h3>GOOGLE GEMMA AI</h3>
+                <p>Upload question paper PDFs and get instant step-by-step technical solutions.</p>
+            </div>
+        </div>
+    </section>
+
+    <section class="section-padding" id="branches">
+        <div class="container">
+            <div class="section-header">
+                <h2>DPG Engineering Departments</h2>
+                <p>Select your diploma engineering discipline to view semester-wise subjects and materials.</p>
+            </div>
+
+            <div class="branches-grid">
+                <div class="branch-card" onclick="filterByBranch('Computer Engineering')">
+                    <div class="branch-icon"><i class="fa-solid fa-laptop-code"></i></div>
+                    <h3>Computer Engineering</h3>
+                    <p>C, C++, Data Structures, DBMS, Java, Web Development, & Operating Systems.</p>
+                    <span class="branch-link">Explore Branch <i class="fa-solid fa-chevron-right"></i></span>
+                </div>
+
+                <div class="branch-card" onclick="filterByBranch('AI & ML')">
+                    <div class="branch-icon"><i class="fa-solid fa-brain"></i></div>
+                    <h3>AI & Machine Learning</h3>
+                    <p>Python Programming, Data Analytics Fundamentals, AI Basics, & Machine Learning.</p>
+                    <span class="branch-link">Explore Branch <i class="fa-solid fa-chevron-right"></i></span>
+                </div>
+
+                <div class="branch-card" onclick="filterByBranch('Mechanical Engineering')">
+                    <div class="branch-icon"><i class="fa-solid fa-gears"></i></div>
+                    <h3>Mechanical Engineering</h3>
+                    <p>Applied Thermodynamics, SOM, Fluid Mechanics, CAD/CAM, & Manufacturing.</p>
+                    <span class="branch-link">Explore Branch <i class="fa-solid fa-chevron-right"></i></span>
+                </div>
+
+                <div class="branch-card" onclick="filterByBranch('Civil Engineering')">
+                    <div class="branch-icon"><i class="fa-solid fa-building-columns"></i></div>
+                    <h3>Civil Engineering</h3>
+                    <p>Surveying, Construction Materials, Concrete Technology, & Structure Mechanics.</p>
+                    <span class="branch-link">Explore Branch <i class="fa-solid fa-chevron-right"></i></span>
+                </div>
+
+                <div class="branch-card" onclick="filterByBranch('Electrical Engineering')">
+                    <div class="branch-icon"><i class="fa-solid fa-bolt"></i></div>
+                    <h3>Electrical Engineering</h3>
+                    <p>Circuit Theory, Electrical Machines, Power Systems, & Control Systems.</p>
+                    <span class="branch-link">Explore Branch <i class="fa-solid fa-chevron-right"></i></span>
+                </div>
+
+                <div class="branch-card" onclick="filterByBranch('Automobile Engineering')">
+                    <div class="branch-icon"><i class="fa-solid fa-car"></i></div>
+                    <h3>Automobile Engineering</h3>
+                    <p>Auto Engines, Chassis Design, Transmission Systems, & Vehicle Maintenance.</p>
+                    <span class="branch-link">Explore Branch <i class="fa-solid fa-chevron-right"></i></span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="section-padding bg-darker" id="semesters">
+        <div class="container">
+            <div class="section-header">
+                <h2>Study Materials & Resources</h2>
+                <p>Filter by year, semester, and resource type to instantly download PDFs.</p>
+            </div>
+
+            <div class="filter-wrapper">
+                <div class="tabs-container">
+                    <button class="tab-btn active" onclick="switchSemesterTab('all', this)">All Semesters</button>
+                    <button class="tab-btn" onclick="switchSemesterTab('sem1', this)">Sem 1</button>
+                    <button class="tab-btn" onclick="switchSemesterTab('sem2', this)">Sem 2</button>
+                    <button class="tab-btn" onclick="switchSemesterTab('sem3', this)">Sem 3</button>
+                    <button class="tab-btn" onclick="switchSemesterTab('sem4', this)">Sem 4</button>
+                    <button class="tab-btn" onclick="switchSemesterTab('sem5', this)">Sem 5</button>
+                    <button class="tab-btn" onclick="switchSemesterTab('sem6', this)">Sem 6</button>
+                </div>
+
+                <div class="dropdown-filters">
+                    <select id="branchSelect" onchange="applyFilters()">
+                        <option value="all">All DPG Branches</option>
+                        <option value="Computer Engineering">Computer Engineering</option>
+                        <option value="AI & ML">AI & Machine Learning</option>
+                        <option value="Mechanical Engineering">Mechanical Engineering</option>
+                        <option value="Civil Engineering">Civil Engineering</option>
+                        <option value="Electrical Engineering">Electrical Engineering</option>
+                        <option value="Automobile Engineering">Automobile Engineering</option>
+                    </select>
+
+                    <select id="typeSelect" onchange="applyFilters()">
+                        <option value="all">All Resource Types</option>
+                        <option value="Notes">Study Notes</option>
+                        <option value="PYQ">Question Papers (PYQ)</option>
+                        <option value="Syllabus">Syllabus</option>
+                        <option value="Practical">Practical / Lab File</option>
+                    </select>
+                </div>
+            </div>
+
+            <div class="resources-grid" id="resourcesGrid">
+                <div class="resource-card" data-sem="sem1" data-branch="Computer Engineering" data-type="Notes">
+                    <div class="card-meta">
+                        <span class="badge badge-sem">Sem 1</span>
+                        <span class="badge badge-branch">Computer Engineering</span>
+                        <span class="badge badge-code">Sub: HSBTE-101</span>
+                    </div>
+                    <h3>Applied Mathematics-I Notes</h3>
+                    <p>Complete unit-wise handwritten notes covering Algebra, Trigonometry & Vectors.</p>
+                    <div class="card-footer">
+                        <span class="tag-type"><i class="fa-solid fa-book"></i> Notes</span>
+                        <button class="btn-download" onclick="downloadNotice('Applied Mathematics-I Notes')"><i class="fa-solid fa-download"></i> Download PDF</button>
+                    </div>
+                </div>
+
+                <div class="resource-card" data-sem="sem2" data-branch="Computer Engineering" data-type="PYQ">
+                    <div class="card-meta">
+                        <span class="badge badge-sem">Sem 2</span>
+                        <span class="badge badge-branch">Computer Engineering</span>
+                        <span class="badge badge-code">Sub: HSBTE-202</span>
+                    </div>
+                    <h3>C Programming Previous Year Question Papers</h3>
+                    <p>Solved question paper collection with step-by-step programming code solutions.</p>
+                    <div class="card-footer">
+                        <span class="tag-type"><i class="fa-solid fa-file-pdf"></i> PYQ</span>
+                        <button class="btn-download" onclick="downloadNotice('C Programming PYQ')"><i class="fa-solid fa-download"></i> Download PDF</button>
+                    </div>
+                </div>
+
+                <div class="resource-card" data-sem="sem3" data-branch="Mechanical Engineering" data-type="Notes">
+                    <div class="card-meta">
+                        <span class="badge badge-sem">Sem 3</span>
+                        <span class="badge badge-branch">Mechanical Engineering</span>
+                        <span class="badge badge-code">Sub: HSBTE-301</span>
+                    </div>
+                    <h3>Applied Thermodynamics Lecture Notes</h3>
+                    <p>Comprehensive guide on Steam Generators, Turbines & Refrigeration Cycles.</p>
+                    <div class="card-footer">
+                        <span class="tag-type"><i class="fa-solid fa-book"></i> Notes</span>
+                        <button class="btn-download" onclick="downloadNotice('Applied Thermodynamics Notes')"><i class="fa-solid fa-download"></i> Download PDF</button>
+                    </div>
+                </div>
+
+                <div class="resource-card" data-sem="sem3" data-branch="Civil Engineering" data-type="Practical">
+                    <div class="card-meta">
+                        <span class="badge badge-sem">Sem 3</span>
+                        <span class="badge badge-branch">Civil Engineering</span>
+                        <span class="badge badge-code">Sub: HSBTE-304</span>
+                    </div>
+                    <h3>Surveying Lab Practical Manual</h3>
+                    <p>Complete experiment details with readings, calculations, and field charts.</p>
+                    <div class="card-footer">
+                        <span class="tag-type"><i class="fa-solid fa-flask"></i> Practical File</span>
+                        <button class="btn-download" onclick="downloadNotice('Surveying Lab Manual')"><i class="fa-solid fa-download"></i> Download PDF</button>
+                    </div>
+                </div>
+
+                <div class="resource-card" data-sem="sem4" data-branch="Electrical Engineering" data-type="Syllabus">
+                    <div class="card-meta">
+                        <span class="badge badge-sem">Sem 4</span>
+                        <span class="badge badge-branch">Electrical Engineering</span>
+                        <span class="badge badge-code">Sub: HSBTE-405</span>
+                    </div>
+                    <h3>Electrical Machines II Official Syllabus</h3>
+                    <p>Board prescribed curriculum, chapter weightage, and practical exam pattern.</p>
+                    <div class="card-footer">
+                        <span class="tag-type"><i class="fa-solid fa-list-check"></i> Syllabus</span>
+                        <button class="btn-download" onclick="downloadNotice('Electrical Machines Syllabus')"><i class="fa-solid fa-download"></i> Download PDF</button>
+                    </div>
+                </div>
+
+                <div class="resource-card" data-sem="sem4" data-branch="Computer Engineering" data-type="Notes">
+                    <div class="card-meta">
+                        <span class="badge badge-sem">Sem 4</span>
+                        <span class="badge badge-branch">Computer Engineering</span>
+                        <span class="badge badge-code">Sub: HSBTE-402</span>
+                    </div>
+                    <h3>Database Management System (DBMS)</h3>
+                    <p>ER Diagrams, SQL Queries, Normalization, and Transaction Processing Notes.</p>
+                    <div class="card-footer">
+                        <span class="tag-type"><i class="fa-solid fa-book"></i> Notes</span>
+                        <button class="btn-download" onclick="downloadNotice('DBMS Notes')"><i class="fa-solid fa-download"></i> Download PDF</button>
+                    </div>
+                </div>
+
+                <div class="resource-card" data-sem="sem1" data-branch="Computer Engineering" data-type="PYQ">
+                    <div class="card-meta">
+                        <span class="badge badge-sem">Sem 1</span>
+                        <span class="badge badge-branch">Computer Engineering</span>
+                        <span class="badge badge-code">May 2026</span>
+                    </div>
+                    <h3>Computer Engineering - Sem 1 Question Papers (May 2026)</h3>
+                    <p>9 HSBTE question papers of May 2026 exam in one PDF (40 pages, 3.4 MB). Subject-wise bookmarks included.</p>
+                    <div class="card-footer">
+                        <span class="tag-type"><i class="fa-solid fa-file-pdf"></i> PYQ</span>
+                        <a class="btn-download" style="text-decoration:none" href="pyqs/Computer_Engineering/Sem1.pdf" target="_blank" rel="noopener" download><i class="fa-solid fa-download"></i> Download PDF</a>
+                    </div>
+                </div>
+
+                <div class="resource-card" data-sem="sem1" data-branch="AI &amp; ML" data-type="PYQ">
+                    <div class="card-meta">
+                        <span class="badge badge-sem">Sem 1</span>
+                        <span class="badge badge-branch">AI &amp; Machine Learning</span>
+                        <span class="badge badge-code">May 2026</span>
+                    </div>
+                    <h3>AI &amp; Machine Learning - Sem 1 Question Papers (May 2026)</h3>
+                    <p>4 HSBTE question papers of May 2026 exam in one PDF (26 pages, 1.4 MB). Subject-wise bookmarks included.</p>
+                    <div class="card-footer">
+                        <span class="tag-type"><i class="fa-solid fa-file-pdf"></i> PYQ</span>
+                        <a class="btn-download" style="text-decoration:none" href="pyqs/AIML/Sem1.pdf" target="_blank" rel="noopener" download><i class="fa-solid fa-download"></i> Download PDF</a>
+                    </div>
+                </div>
+
+                <div class="resource-card" data-sem="sem1" data-branch="Mechanical Engineering" data-type="PYQ">
+                    <div class="card-meta">
+                        <span class="badge badge-sem">Sem 1</span>
+                        <span class="badge badge-branch">Mechanical Engineering</span>
+                        <span class="badge badge-code">May 2026</span>
+                    </div>
+                    <h3>Mechanical Engineering - Sem 1 Question Papers (May 2026)</h3>
+                    <p>11 HSBTE question papers of May 2026 exam in one PDF (50 pages, 3.5 MB). Subject-wise bookmarks included.</p>
+                    <div class="card-footer">
+                        <span class="tag-type"><i class="fa-solid fa-file-pdf"></i> PYQ</span>
+                        <a class="btn-download" style="text-decoration:none" href="pyqs/Mechanical_Engineering/Sem1.pdf" target="_blank" rel="noopener" download><i class="fa-solid fa-download"></i> Download PDF</a>
+                    </div>
+                </div>
+
+                <div class="resource-card" data-sem="sem1" data-branch="Civil Engineering" data-type="PYQ">
+                    <div class="card-meta">
+                        <span class="badge badge-sem">Sem 1</span>
+                        <span class="badge badge-branch">Civil Engineering</span>
+                        <span class="badge badge-code">May 2026</span>
+                    </div>
+                    <h3>Civil Engineering - Sem 1 Question Papers (May 2026)</h3>
+                    <p>8 HSBTE question papers of May 2026 exam in one PDF (40 pages, 3.4 MB). Subject-wise bookmarks included.</p>
+                    <div class="card-footer">
+                        <span class="tag-type"><i class="fa-solid fa-file-pdf"></i> PYQ</span>
+                        <a class="btn-download" style="text-decoration:none" href="pyqs/Civil_Engineering/Sem1.pdf" target="_blank" rel="noopener" download><i class="fa-solid fa-download"></i> Download PDF</a>
+                    </div>
+                </div>
+
+                <div class="resource-card" data-sem="sem1" data-branch="Electrical Engineering" data-type="PYQ">
+                    <div class="card-meta">
+                        <span class="badge badge-sem">Sem 1</span>
+                        <span class="badge badge-branch">Electrical Engineering</span>
+                        <span class="badge badge-code">May 2026</span>
+                    </div>
+                    <h3>Electrical Engineering - Sem 1 Question Papers (May 2026)</h3>
+                    <p>7 HSBTE question papers of May 2026 exam in one PDF (36 pages, 3.3 MB). Subject-wise bookmarks included.</p>
+                    <div class="card-footer">
+                        <span class="tag-type"><i class="fa-solid fa-file-pdf"></i> PYQ</span>
+                        <a class="btn-download" style="text-decoration:none" href="pyqs/Electrical_Engineering/Sem1.pdf" target="_blank" rel="noopener" download><i class="fa-solid fa-download"></i> Download PDF</a>
+                    </div>
+                </div>
+
+                <div class="resource-card" data-sem="sem1" data-branch="Automobile Engineering" data-type="PYQ">
+                    <div class="card-meta">
+                        <span class="badge badge-sem">Sem 1</span>
+                        <span class="badge badge-branch">Automobile Engineering</span>
+                        <span class="badge badge-code">May 2026</span>
+                    </div>
+                    <h3>Automobile Engineering - Sem 1 Question Papers (May 2026)</h3>
+                    <p>8 HSBTE question papers of May 2026 exam in one PDF (42 pages, 3.4 MB). Subject-wise bookmarks included.</p>
+                    <div class="card-footer">
+                        <span class="tag-type"><i class="fa-solid fa-file-pdf"></i> PYQ</span>
+                        <a class="btn-download" style="text-decoration:none" href="pyqs/Automobile_Engineering/Sem1.pdf" target="_blank" rel="noopener" download><i class="fa-solid fa-download"></i> Download PDF</a>
+                    </div>
+                </div>
+
+                <div class="resource-card" data-sem="sem2" data-branch="Computer Engineering" data-type="PYQ">
+                    <div class="card-meta">
+                        <span class="badge badge-sem">Sem 2</span>
+                        <span class="badge badge-branch">Computer Engineering</span>
+                        <span class="badge badge-code">May 2026</span>
+                    </div>
+                    <h3>Computer Engineering - Sem 2 Question Papers (May 2026)</h3>
+                    <p>11 HSBTE question papers of May 2026 exam in one PDF (54 pages, 2.1 MB). Subject-wise bookmarks included.</p>
+                    <div class="card-footer">
+                        <span class="tag-type"><i class="fa-solid fa-file-pdf"></i> PYQ</span>
+                        <a class="btn-download" style="text-decoration:none" href="pyqs/Computer_Engineering/Sem2.pdf" target="_blank" rel="noopener" download><i class="fa-solid fa-download"></i> Download PDF</a>
+                    </div>
+                </div>
+
+                <div class="resource-card" data-sem="sem2" data-branch="AI &amp; ML" data-type="PYQ">
+                    <div class="card-meta">
+                        <span class="badge badge-sem">Sem 2</span>
+                        <span class="badge badge-branch">AI &amp; Machine Learning</span>
+                        <span class="badge badge-code">May 2026</span>
+                    </div>
+                    <h3>AI &amp; Machine Learning - Sem 2 Question Papers (May 2026)</h3>
+                    <p>6 HSBTE question papers of May 2026 exam in one PDF (30 pages, 1.6 MB). Subject-wise bookmarks included.</p>
+                    <div class="card-footer">
+                        <span class="tag-type"><i class="fa-solid fa-file-pdf"></i> PYQ</span>
+                        <a class="btn-download" style="text-decoration:none" href="pyqs/AIML/Sem2.pdf" target="_blank" rel="noopener" download><i class="fa-solid fa-download"></i> Download PDF</a>
+                    </div>
+                </div>
+
+                <div class="resource-card" data-sem="sem2" data-branch="Mechanical Engineering" data-type="PYQ">
+                    <div class="card-meta">
+                        <span class="badge badge-sem">Sem 2</span>
+                        <span class="badge badge-branch">Mechanical Engineering</span>
+                        <span class="badge badge-code">May 2026</span>
+                    </div>
+                    <h3>Mechanical Engineering - Sem 2 Question Papers (May 2026)</h3>
+                    <p>12 HSBTE question papers of May 2026 exam in one PDF (46 pages, 2.1 MB). Subject-wise bookmarks included.</p>
+                    <div class="card-footer">
+                        <span class="tag-type"><i class="fa-solid fa-file-pdf"></i> PYQ</span>
+                        <a class="btn-download" style="text-decoration:none" href="pyqs/Mechanical_Engineering/Sem2.pdf" target="_blank" rel="noopener" download><i class="fa-solid fa-download"></i> Download PDF</a>
+                    </div>
+                </div>
+
+                <div class="resource-card" data-sem="sem2" data-branch="Civil Engineering" data-type="PYQ">
+                    <div class="card-meta">
+                        <span class="badge badge-sem">Sem 2</span>
+                        <span class="badge badge-branch">Civil Engineering</span>
+                        <span class="badge badge-code">May 2026</span>
+                    </div>
+                    <h3>Civil Engineering - Sem 2 Question Papers (May 2026)</h3>
+                    <p>11 HSBTE question papers of May 2026 exam in one PDF (58 pages, 2.1 MB). Subject-wise bookmarks included.</p>
+                    <div class="card-footer">
+                        <span class="tag-type"><i class="fa-solid fa-file-pdf"></i> PYQ</span>
+                        <a class="btn-download" style="text-decoration:none" href="pyqs/Civil_Engineering/Sem2.pdf" target="_blank" rel="noopener" download><i class="fa-solid fa-download"></i> Download PDF</a>
+                    </div>
+                </div>
+
+                <div class="resource-card" data-sem="sem2" data-branch="Electrical Engineering" data-type="PYQ">
+                    <div class="card-meta">
+                        <span class="badge badge-sem">Sem 2</span>
+                        <span class="badge badge-branch">Electrical Engineering</span>
+                        <span class="badge badge-code">May 2026</span>
+                    </div>
+                    <h3>Electrical Engineering - Sem 2 Question Papers (May 2026)</h3>
+                    <p>9 HSBTE question papers of May 2026 exam in one PDF (42 pages, 2.0 MB). Subject-wise bookmarks included.</p>
+                    <div class="card-footer">
+                        <span class="tag-type"><i class="fa-solid fa-file-pdf"></i> PYQ</span>
+                        <a class="btn-download" style="text-decoration:none" href="pyqs/Electrical_Engineering/Sem2.pdf" target="_blank" rel="noopener" download><i class="fa-solid fa-download"></i> Download PDF</a>
+                    </div>
+                </div>
+
+                <div class="resource-card" data-sem="sem2" data-branch="Automobile Engineering" data-type="PYQ">
+                    <div class="card-meta">
+                        <span class="badge badge-sem">Sem 2</span>
+                        <span class="badge badge-branch">Automobile Engineering</span>
+                        <span class="badge badge-code">May 2026</span>
+                    </div>
+                    <h3>Automobile Engineering - Sem 2 Question Papers (May 2026)</h3>
+                    <p>9 HSBTE question papers of May 2026 exam in one PDF (46 pages, 2.0 MB). Subject-wise bookmarks included.</p>
+                    <div class="card-footer">
+                        <span class="tag-type"><i class="fa-solid fa-file-pdf"></i> PYQ</span>
+                        <a class="btn-download" style="text-decoration:none" href="pyqs/Automobile_Engineering/Sem2.pdf" target="_blank" rel="noopener" download><i class="fa-solid fa-download"></i> Download PDF</a>
+                    </div>
+                </div>
+
+                <div class="resource-card" data-sem="sem3" data-branch="Computer Engineering" data-type="PYQ">
+                    <div class="card-meta">
+                        <span class="badge badge-sem">Sem 3</span>
+                        <span class="badge badge-branch">Computer Engineering</span>
+                        <span class="badge badge-code">May 2026</span>
+                    </div>
+                    <h3>Computer Engineering - Sem 3 Question Papers (May 2026)</h3>
+                    <p>8 HSBTE question papers of May 2026 exam in one PDF (24 pages, 0.3 MB). Subject-wise bookmarks included.</p>
+                    <div class="card-footer">
+                        <span class="tag-type"><i class="fa-solid fa-file-pdf"></i> PYQ</span>
+                        <a class="btn-download" style="text-decoration:none" href="pyqs/Computer_Engineering/Sem3.pdf" target="_blank" rel="noopener" download><i class="fa-solid fa-download"></i> Download PDF</a>
+                    </div>
+                </div>
+
+                <div class="resource-card" data-sem="sem3" data-branch="AI &amp; ML" data-type="PYQ">
+                    <div class="card-meta">
+                        <span class="badge badge-sem">Sem 3</span>
+                        <span class="badge badge-branch">AI &amp; Machine Learning</span>
+                        <span class="badge badge-code">May 2026</span>
+                    </div>
+                    <h3>AI &amp; Machine Learning - Sem 3 Question Papers (May 2026)</h3>
+                    <p>4 HSBTE question papers of May 2026 exam in one PDF (8 pages, 0.1 MB). Subject-wise bookmarks included.</p>
+                    <div class="card-footer">
+                        <span class="tag-type"><i class="fa-solid fa-file-pdf"></i> PYQ</span>
+                        <a class="btn-download" style="text-decoration:none" href="pyqs/AIML/Sem3.pdf" target="_blank" rel="noopener" download><i class="fa-solid fa-download"></i> Download PDF</a>
+                    </div>
+                </div>
+
+                <div class="resource-card" data-sem="sem3" data-branch="Mechanical Engineering" data-type="PYQ">
+                    <div class="card-meta">
+                        <span class="badge badge-sem">Sem 3</span>
+                        <span class="badge badge-branch">Mechanical Engineering</span>
+                        <span class="badge badge-code">May 2026</span>
+                    </div>
+                    <h3>Mechanical Engineering - Sem 3 Question Papers (May 2026)</h3>
+                    <p>10 HSBTE question papers of May 2026 exam in one PDF (32 pages, 2.1 MB). Subject-wise bookmarks included.</p>
+                    <div class="card-footer">
+                        <span class="tag-type"><i class="fa-solid fa-file-pdf"></i> PYQ</span>
+                        <a class="btn-download" style="text-decoration:none" href="pyqs/Mechanical_Engineering/Sem3.pdf" target="_blank" rel="noopener" download><i class="fa-solid fa-download"></i> Download PDF</a>
+                    </div>
+                </div>
+
+                <div class="resource-card" data-sem="sem3" data-branch="Civil Engineering" data-type="PYQ">
+                    <div class="card-meta">
+                        <span class="badge badge-sem">Sem 3</span>
+                        <span class="badge badge-branch">Civil Engineering</span>
+                        <span class="badge badge-code">May 2026</span>
+                    </div>
+                    <h3>Civil Engineering - Sem 3 Question Papers (May 2026)</h3>
+                    <p>10 HSBTE question papers of May 2026 exam in one PDF (34 pages, 0.4 MB). Subject-wise bookmarks included.</p>
+                    <div class="card-footer">
+                        <span class="tag-type"><i class="fa-solid fa-file-pdf"></i> PYQ</span>
+                        <a class="btn-download" style="text-decoration:none" href="pyqs/Civil_Engineering/Sem3.pdf" target="_blank" rel="noopener" download><i class="fa-solid fa-download"></i> Download PDF</a>
+                    </div>
+                </div>
+
+                <div class="resource-card" data-sem="sem3" data-branch="Electrical Engineering" data-type="PYQ">
+                    <div class="card-meta">
+                        <span class="badge badge-sem">Sem 3</span>
+                        <span class="badge badge-branch">Electrical Engineering</span>
+                        <span class="badge badge-code">May 2026</span>
+                    </div>
+                    <h3>Electrical Engineering - Sem 3 Question Papers (May 2026)</h3>
+                    <p>12 HSBTE question papers of May 2026 exam in one PDF (30 pages, 0.6 MB). Subject-wise bookmarks included.</p>
+                    <div class="card-footer">
+                        <span class="tag-type"><i class="fa-solid fa-file-pdf"></i> PYQ</span>
+                        <a class="btn-download" style="text-decoration:none" href="pyqs/Electrical_Engineering/Sem3.pdf" target="_blank" rel="noopener" download><i class="fa-solid fa-download"></i> Download PDF</a>
+                    </div>
+                </div>
+
+                <div class="resource-card" data-sem="sem3" data-branch="Automobile Engineering" data-type="PYQ">
+                    <div class="card-meta">
+                        <span class="badge badge-sem">Sem 3</span>
+                        <span class="badge badge-branch">Automobile Engineering</span>
+                        <span class="badge badge-code">May 2026</span>
+                    </div>
+                    <h3>Automobile Engineering - Sem 3 Question Papers (May 2026)</h3>
+                    <p>7 HSBTE question papers of May 2026 exam in one PDF (22 pages, 0.3 MB). Subject-wise bookmarks included.</p>
+                    <div class="card-footer">
+                        <span class="tag-type"><i class="fa-solid fa-file-pdf"></i> PYQ</span>
+                        <a class="btn-download" style="text-decoration:none" href="pyqs/Automobile_Engineering/Sem3.pdf" target="_blank" rel="noopener" download><i class="fa-solid fa-download"></i> Download PDF</a>
+                    </div>
+                </div>
+
+                <div class="resource-card" data-sem="sem4" data-branch="Computer Engineering" data-type="PYQ">
+                    <div class="card-meta">
+                        <span class="badge badge-sem">Sem 4</span>
+                        <span class="badge badge-branch">Computer Engineering</span>
+                        <span class="badge badge-code">May 2026</span>
+                    </div>
+                    <h3>Computer Engineering - Sem 4 Question Papers (May 2026)</h3>
+                    <p>8 HSBTE question papers of May 2026 exam in one PDF (22 pages, 0.3 MB). Subject-wise bookmarks included.</p>
+                    <div class="card-footer">
+                        <span class="tag-type"><i class="fa-solid fa-file-pdf"></i> PYQ</span>
+                        <a class="btn-download" style="text-decoration:none" href="pyqs/Computer_Engineering/Sem4.pdf" target="_blank" rel="noopener" download><i class="fa-solid fa-download"></i> Download PDF</a>
+                    </div>
+                </div>
+
+                <div class="resource-card" data-sem="sem4" data-branch="AI &amp; ML" data-type="PYQ">
+                    <div class="card-meta">
+                        <span class="badge badge-sem">Sem 4</span>
+                        <span class="badge badge-branch">AI &amp; Machine Learning</span>
+                        <span class="badge badge-code">May 2026</span>
+                    </div>
+                    <h3>AI &amp; Machine Learning - Sem 4 Question Papers (May 2026)</h3>
+                    <p>7 HSBTE question papers of May 2026 exam in one PDF (14 pages, 0.3 MB). Subject-wise bookmarks included.</p>
+                    <div class="card-footer">
+                        <span class="tag-type"><i class="fa-solid fa-file-pdf"></i> PYQ</span>
+                        <a class="btn-download" style="text-decoration:none" href="pyqs/AIML/Sem4.pdf" target="_blank" rel="noopener" download><i class="fa-solid fa-download"></i> Download PDF</a>
+                    </div>
+                </div>
+
+                <div class="resource-card" data-sem="sem4" data-branch="Mechanical Engineering" data-type="PYQ">
+                    <div class="card-meta">
+                        <span class="badge badge-sem">Sem 4</span>
+                        <span class="badge badge-branch">Mechanical Engineering</span>
+                        <span class="badge badge-code">May 2026</span>
+                    </div>
+                    <h3>Mechanical Engineering - Sem 4 Question Papers (May 2026)</h3>
+                    <p>15 HSBTE question papers of May 2026 exam in one PDF (48 pages, 1.7 MB). Subject-wise bookmarks included.</p>
+                    <div class="card-footer">
+                        <span class="tag-type"><i class="fa-solid fa-file-pdf"></i> PYQ</span>
+                        <a class="btn-download" style="text-decoration:none" href="pyqs/Mechanical_Engineering/Sem4.pdf" target="_blank" rel="noopener" download><i class="fa-solid fa-download"></i> Download PDF</a>
+                    </div>
+                </div>
+
+                <div class="resource-card" data-sem="sem4" data-branch="Civil Engineering" data-type="PYQ">
+                    <div class="card-meta">
+                        <span class="badge badge-sem">Sem 4</span>
+                        <span class="badge badge-branch">Civil Engineering</span>
+                        <span class="badge badge-code">May 2026</span>
+                    </div>
+                    <h3>Civil Engineering - Sem 4 Question Papers (May 2026)</h3>
+                    <p>11 HSBTE question papers of May 2026 exam in one PDF (31 pages, 0.4 MB). Subject-wise bookmarks included.</p>
+                    <div class="card-footer">
+                        <span class="tag-type"><i class="fa-solid fa-file-pdf"></i> PYQ</span>
+                        <a class="btn-download" style="text-decoration:none" href="pyqs/Civil_Engineering/Sem4.pdf" target="_blank" rel="noopener" download><i class="fa-solid fa-download"></i> Download PDF</a>
+                    </div>
+                </div>
+
+                <div class="resource-card" data-sem="sem4" data-branch="Electrical Engineering" data-type="PYQ">
+                    <div class="card-meta">
+                        <span class="badge badge-sem">Sem 4</span>
+                        <span class="badge badge-branch">Electrical Engineering</span>
+                        <span class="badge badge-code">May 2026</span>
+                    </div>
+                    <h3>Electrical Engineering - Sem 4 Question Papers (May 2026)</h3>
+                    <p>10 HSBTE question papers of May 2026 exam in one PDF (24 pages, 0.4 MB). Subject-wise bookmarks included.</p>
+                    <div class="card-footer">
+                        <span class="tag-type"><i class="fa-solid fa-file-pdf"></i> PYQ</span>
+                        <a class="btn-download" style="text-decoration:none" href="pyqs/Electrical_Engineering/Sem4.pdf" target="_blank" rel="noopener" download><i class="fa-solid fa-download"></i> Download PDF</a>
+                    </div>
+                </div>
+
+                <div class="resource-card" data-sem="sem4" data-branch="Automobile Engineering" data-type="PYQ">
+                    <div class="card-meta">
+                        <span class="badge badge-sem">Sem 4</span>
+                        <span class="badge badge-branch">Automobile Engineering</span>
+                        <span class="badge badge-code">May 2026</span>
+                    </div>
+                    <h3>Automobile Engineering - Sem 4 Question Papers (May 2026)</h3>
+                    <p>12 HSBTE question papers of May 2026 exam in one PDF (30 pages, 0.8 MB). Subject-wise bookmarks included.</p>
+                    <div class="card-footer">
+                        <span class="tag-type"><i class="fa-solid fa-file-pdf"></i> PYQ</span>
+                        <a class="btn-download" style="text-decoration:none" href="pyqs/Automobile_Engineering/Sem4.pdf" target="_blank" rel="noopener" download><i class="fa-solid fa-download"></i> Download PDF</a>
+                    </div>
+                </div>
+
+                <div class="resource-card" data-sem="sem5" data-branch="Computer Engineering" data-type="PYQ">
+                    <div class="card-meta">
+                        <span class="badge badge-sem">Sem 5</span>
+                        <span class="badge badge-branch">Computer Engineering</span>
+                        <span class="badge badge-code">May 2026</span>
+                    </div>
+                    <h3>Computer Engineering - Sem 5 Question Papers (May 2026)</h3>
+                    <p>11 HSBTE question papers of May 2026 exam in one PDF (30 pages, 0.4 MB). Subject-wise bookmarks included.</p>
+                    <div class="card-footer">
+                        <span class="tag-type"><i class="fa-solid fa-file-pdf"></i> PYQ</span>
+                        <a class="btn-download" style="text-decoration:none" href="pyqs/Computer_Engineering/Sem5.pdf" target="_blank" rel="noopener" download><i class="fa-solid fa-download"></i> Download PDF</a>
+                    </div>
+                </div>
+
+                <div class="resource-card" data-sem="sem5" data-branch="AI &amp; ML" data-type="PYQ">
+                    <div class="card-meta">
+                        <span class="badge badge-sem">Sem 5</span>
+                        <span class="badge badge-branch">AI &amp; Machine Learning</span>
+                        <span class="badge badge-code">May 2026</span>
+                    </div>
+                    <h3>AI &amp; Machine Learning - Sem 5 Question Papers (May 2026)</h3>
+                    <p>4 HSBTE question papers of May 2026 exam in one PDF (10 pages, 0.1 MB). Subject-wise bookmarks included.</p>
+                    <div class="card-footer">
+                        <span class="tag-type"><i class="fa-solid fa-file-pdf"></i> PYQ</span>
+                        <a class="btn-download" style="text-decoration:none" href="pyqs/AIML/Sem5.pdf" target="_blank" rel="noopener" download><i class="fa-solid fa-download"></i> Download PDF</a>
+                    </div>
+                </div>
+
+                <div class="resource-card" data-sem="sem5" data-branch="Mechanical Engineering" data-type="PYQ">
+                    <div class="card-meta">
+                        <span class="badge badge-sem">Sem 5</span>
+                        <span class="badge badge-branch">Mechanical Engineering</span>
+                        <span class="badge badge-code">May 2026</span>
+                    </div>
+                    <h3>Mechanical Engineering - Sem 5 Question Papers (May 2026)</h3>
+                    <p>15 HSBTE question papers of May 2026 exam in one PDF (46 pages, 0.5 MB). Subject-wise bookmarks included.</p>
+                    <div class="card-footer">
+                        <span class="tag-type"><i class="fa-solid fa-file-pdf"></i> PYQ</span>
+                        <a class="btn-download" style="text-decoration:none" href="pyqs/Mechanical_Engineering/Sem5.pdf" target="_blank" rel="noopener" download><i class="fa-solid fa-download"></i> Download PDF</a>
+                    </div>
+                </div>
+
+                <div class="resource-card" data-sem="sem5" data-branch="Civil Engineering" data-type="PYQ">
+                    <div class="card-meta">
+                        <span class="badge badge-sem">Sem 5</span>
+                        <span class="badge badge-branch">Civil Engineering</span>
+                        <span class="badge badge-code">May 2026</span>
+                    </div>
+                    <h3>Civil Engineering - Sem 5 Question Papers (May 2026)</h3>
+                    <p>12 HSBTE question papers of May 2026 exam in one PDF (38 pages, 0.4 MB). Subject-wise bookmarks included.</p>
+                    <div class="card-footer">
+                        <span class="tag-type"><i class="fa-solid fa-file-pdf"></i> PYQ</span>
+                        <a class="btn-download" style="text-decoration:none" href="pyqs/Civil_Engineering/Sem5.pdf" target="_blank" rel="noopener" download><i class="fa-solid fa-download"></i> Download PDF</a>
+                    </div>
+                </div>
+
+                <div class="resource-card" data-sem="sem5" data-branch="Electrical Engineering" data-type="PYQ">
+                    <div class="card-meta">
+                        <span class="badge badge-sem">Sem 5</span>
+                        <span class="badge badge-branch">Electrical Engineering</span>
+                        <span class="badge badge-code">May 2026</span>
+                    </div>
+                    <h3>Electrical Engineering - Sem 5 Question Papers (May 2026)</h3>
+                    <p>12 HSBTE question papers of May 2026 exam in one PDF (32 pages, 0.4 MB). Subject-wise bookmarks included.</p>
+                    <div class="card-footer">
+                        <span class="tag-type"><i class="fa-solid fa-file-pdf"></i> PYQ</span>
+                        <a class="btn-download" style="text-decoration:none" href="pyqs/Electrical_Engineering/Sem5.pdf" target="_blank" rel="noopener" download><i class="fa-solid fa-download"></i> Download PDF</a>
+                    </div>
+                </div>
+
+                <div class="resource-card" data-sem="sem5" data-branch="Automobile Engineering" data-type="PYQ">
+                    <div class="card-meta">
+                        <span class="badge badge-sem">Sem 5</span>
+                        <span class="badge badge-branch">Automobile Engineering</span>
+                        <span class="badge badge-code">May 2026</span>
+                    </div>
+                    <h3>Automobile Engineering - Sem 5 Question Papers (May 2026)</h3>
+                    <p>8 HSBTE question papers of May 2026 exam in one PDF (16 pages, 0.3 MB). Subject-wise bookmarks included.</p>
+                    <div class="card-footer">
+                        <span class="tag-type"><i class="fa-solid fa-file-pdf"></i> PYQ</span>
+                        <a class="btn-download" style="text-decoration:none" href="pyqs/Automobile_Engineering/Sem5.pdf" target="_blank" rel="noopener" download><i class="fa-solid fa-download"></i> Download PDF</a>
+                    </div>
+                </div>
+
+                <div class="resource-card" data-sem="sem6" data-branch="Computer Engineering" data-type="PYQ">
+                    <div class="card-meta">
+                        <span class="badge badge-sem">Sem 6</span>
+                        <span class="badge badge-branch">Computer Engineering</span>
+                        <span class="badge badge-code">May 2026</span>
+                    </div>
+                    <h3>Computer Engineering - Sem 6 Question Papers (May 2026)</h3>
+                    <p>7 HSBTE question papers of May 2026 exam in one PDF (24 pages, 0.3 MB). Subject-wise bookmarks included.</p>
+                    <div class="card-footer">
+                        <span class="tag-type"><i class="fa-solid fa-file-pdf"></i> PYQ</span>
+                        <a class="btn-download" style="text-decoration:none" href="pyqs/Computer_Engineering/Sem6.pdf" target="_blank" rel="noopener" download><i class="fa-solid fa-download"></i> Download PDF</a>
+                    </div>
+                </div>
+
+                <div class="resource-card" data-sem="sem6" data-branch="AI &amp; ML" data-type="PYQ">
+                    <div class="card-meta">
+                        <span class="badge badge-sem">Sem 6</span>
+                        <span class="badge badge-branch">AI &amp; Machine Learning</span>
+                        <span class="badge badge-code">May 2026</span>
+                    </div>
+                    <h3>AI &amp; Machine Learning - Sem 6 Question Papers (May 2026)</h3>
+                    <p>5 HSBTE question papers of May 2026 exam in one PDF (10 pages, 0.2 MB). Subject-wise bookmarks included.</p>
+                    <div class="card-footer">
+                        <span class="tag-type"><i class="fa-solid fa-file-pdf"></i> PYQ</span>
+                        <a class="btn-download" style="text-decoration:none" href="pyqs/AIML/Sem6.pdf" target="_blank" rel="noopener" download><i class="fa-solid fa-download"></i> Download PDF</a>
+                    </div>
+                </div>
+
+                <div class="resource-card" data-sem="sem6" data-branch="Mechanical Engineering" data-type="PYQ">
+                    <div class="card-meta">
+                        <span class="badge badge-sem">Sem 6</span>
+                        <span class="badge badge-branch">Mechanical Engineering</span>
+                        <span class="badge badge-code">May 2026</span>
+                    </div>
+                    <h3>Mechanical Engineering - Sem 6 Question Papers (May 2026)</h3>
+                    <p>15 HSBTE question papers of May 2026 exam in one PDF (46 pages, 0.6 MB). Subject-wise bookmarks included.</p>
+                    <div class="card-footer">
+                        <span class="tag-type"><i class="fa-solid fa-file-pdf"></i> PYQ</span>
+                        <a class="btn-download" style="text-decoration:none" href="pyqs/Mechanical_Engineering/Sem6.pdf" target="_blank" rel="noopener" download><i class="fa-solid fa-download"></i> Download PDF</a>
+                    </div>
+                </div>
+
+                <div class="resource-card" data-sem="sem6" data-branch="Civil Engineering" data-type="PYQ">
+                    <div class="card-meta">
+                        <span class="badge badge-sem">Sem 6</span>
+                        <span class="badge badge-branch">Civil Engineering</span>
+                        <span class="badge badge-code">May 2026</span>
+                    </div>
+                    <h3>Civil Engineering - Sem 6 Question Papers (May 2026)</h3>
+                    <p>9 HSBTE question papers of May 2026 exam in one PDF (32 pages, 0.3 MB). Subject-wise bookmarks included.</p>
+                    <div class="card-footer">
+                        <span class="tag-type"><i class="fa-solid fa-file-pdf"></i> PYQ</span>
+                        <a class="btn-download" style="text-decoration:none" href="pyqs/Civil_Engineering/Sem6.pdf" target="_blank" rel="noopener" download><i class="fa-solid fa-download"></i> Download PDF</a>
+                    </div>
+                </div>
+
+                <div class="resource-card" data-sem="sem6" data-branch="Electrical Engineering" data-type="PYQ">
+                    <div class="card-meta">
+                        <span class="badge badge-sem">Sem 6</span>
+                        <span class="badge badge-branch">Electrical Engineering</span>
+                        <span class="badge badge-code">May 2026</span>
+                    </div>
+                    <h3>Electrical Engineering - Sem 6 Question Papers (May 2026)</h3>
+                    <p>11 HSBTE question papers of May 2026 exam in one PDF (36 pages, 0.4 MB). Subject-wise bookmarks included.</p>
+                    <div class="card-footer">
+                        <span class="tag-type"><i class="fa-solid fa-file-pdf"></i> PYQ</span>
+                        <a class="btn-download" style="text-decoration:none" href="pyqs/Electrical_Engineering/Sem6.pdf" target="_blank" rel="noopener" download><i class="fa-solid fa-download"></i> Download PDF</a>
+                    </div>
+                </div>
+
+                <div class="resource-card" data-sem="sem6" data-branch="Automobile Engineering" data-type="PYQ">
+                    <div class="card-meta">
+                        <span class="badge badge-sem">Sem 6</span>
+                        <span class="badge badge-branch">Automobile Engineering</span>
+                        <span class="badge badge-code">May 2026</span>
+                    </div>
+                    <h3>Automobile Engineering - Sem 6 Question Papers (May 2026)</h3>
+                    <p>8 HSBTE question papers of May 2026 exam in one PDF (20 pages, 0.3 MB). Subject-wise bookmarks included.</p>
+                    <div class="card-footer">
+                        <span class="tag-type"><i class="fa-solid fa-file-pdf"></i> PYQ</span>
+                        <a class="btn-download" style="text-decoration:none" href="pyqs/Automobile_Engineering/Sem6.pdf" target="_blank" rel="noopener" download><i class="fa-solid fa-download"></i> Download PDF</a>
+                    </div>
+                </div>
+            </div>
+
+            <div id="noResults" class="no-results" style="display: none;">
+                <i class="fa-solid fa-folder-open"></i>
+                <p>No study materials match your selected filters.</p>
+                <button class="btn btn-teal" onclick="resetFilters()">Reset All Filters</button>
+            </div>
+        </div>
+    </section>
+
+    <!-- AI Bot Floating FAB Button -->
+    <div class="ai-fab" onclick="toggleAIChat()" title="AI Exam Assistant">
+        <i class="fa-solid fa-robot"></i>
+    </div>
+
+  
+    <div class="ai-chat-modal" id="aiChatModal">
+        <div class="ai-chat-header">
+            <span><i class="fa-solid fa-robot"></i> Google Gemma AI Exam Assistant</span>
+            <button onclick="toggleAIChat()">&times;</button>
+        </div>
+        
+        <div class="ai-chat-body" id="aiChatBody">
+            <div class="ai-msg">Hello! I am your DPG Polytechnic AI Assistant powered by Google Gemma. Ask me questions or upload your HSBTE question paper PDF below to get instant solutions!</div>
+        </div>
+
+        
+        <div class="ai-pdf-upload-box" style="padding: 8px 12px; background: #f8f9fa; border-top: 1px solid #ddd; display: flex; gap: 8px; align-items: center;">
+            <input type="file" id="pdfFileInput" accept="application/pdf" style="font-size: 12px; width: 70%;">
+            <button class="btn btn-teal" style="font-size: 12px; padding: 5px 10px;" onclick="uploadAndSolvePDF('pdfFileInput')">
+                <i class="fa-solid fa-upload"></i> Solve PDF
+            </button>
+        </div>
+
+        <div class="ai-chat-footer">
+            <input type="text" id="aiUserInput" placeholder="Ask about PYQs, predict questions..." onkeypress="handleAIEnter(event)">
+            <button onclick="sendAIMessage()"><i class="fa-solid fa-paper-plane"></i></button>
+        </div>
+    </div>
+
+    <footer class="footer" id="contact">
+        <div class="container footer-grid">
+            <div class="footer-col">
+                <a href="#" class="brand-logo">
+                    <i class="fa-solid fa-graduation-cap text-teal"></i> DPG<span>POLYTECHNIC</span>
+                </a>
+                <p>Dedicated educational and resource platform for DPG Polytechnic students. Providing verified notes, HSBTE past papers, and practical files.</p>
+            </div>
+            <div class="footer-col">
+                <h4>Quick Links</h4>
+                <ul>
+                    <li><a href="#home">Home</a></li>
+                    <li><a href="#branches">Departments</a></li>
+                    <li><a href="#semesters">Semesters (1-6)</a></li>
+                    <li><a href="#semesters">Study Materials</a></li>
+                </ul>
+            </div>
+            <div class="footer-col">
+                <h4>Departments</h4>
+                <ul>
+                    <li><a href="#branches">Computer Engineering</a></li>
+                    <li><a href="#branches">AI & Machine Learning</a></li>
+                    <li><a href="#branches">Mechanical Engg.</a></li>
+                    <li><a href="#branches">Civil & Electrical</a></li>
+                </ul>
+            </div>
+            <div class="footer-col">
+                <h4>Contact & Support</h4>
+                <p><i class="fa-solid fa-envelope"></i> support@dpgpolytechnic.com</p>
+                <p><i class="fa-solid fa-location-dot"></i> Sector 34, Gurugram, Haryana</p>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <div class="container">
+                <p>&copy; 2026 DPG Polytechnic Student Portal. All Rights Reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+
+</html>
